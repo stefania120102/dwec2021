@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<body>
+    <h1>Billetes</h1>
+
+    <script>
+        var dinero = prompt("Cuanto dinero quieres cambiar");
+        var dinero_int = parseInt(dinero);
+
+        var b_500 = Math.floor(dinero_int/500);
+        console.log(b_500);
+        dinero_int = dinero_int -(b_500 * 500);
+        console.log(dinero_int);
+
+        var b_200 = Math.floor(dinero_int/200);
+        console.log(b_200);
+        dinero_int = dinero_int -(b_200 * 200);
+        console.log(dinero_int);
+
+        var b_100 = Math.floor(dinero_int/100);
+        console.log(b_100);
+        dinero_int = dinero_int -(b_100 * 100);
+        console.log(dinero_int);
+
+        var b_50 = Math.floor(dinero_int/50);
+        console.log(b_50);
+        dinero_int = dinero_int -(b_50 * 50);
+        console.log(dinero_int);
+
+        var b_5 = Math.floor(dinero_int/5);
+        console.log(b_5);
+        dinero_int = dinero_int -(b_5 * 5);
+        console.log(dinero_int);
+
+        var parrafo_billetes = "<p>";
+        for(i=0;i<b_500;i++){
+        parrafo_billetes += "<img src='img/EUR_500.jpg' style = 'max-width:20%; ' > "
+        }
+
+        for(i=0;i<b_200;i++){
+        parrafo_billetes += "<img src='img/EUR_200.jpg' style = 'max-width:18%; ' > "
+        }
+
+        for(i=0;i<b_100;i++){
+        parrafo_billetes += "<img src='img/EUR_100.jpg' style = 'max-width:15%; ' > "
+        }
+
+        for(i=0;i<b_50;i++){
+        parrafo_billetes += "<img src='img/EUR_50.jpg' style = 'max-width:20%; ' > "
+        }
+
+        for(i=0;i<b_5;i++){
+        parrafo_billetes += "<img src='img/EUR_5.jpg' style = 'max-width:20%; ' > "
+        }
+        parrafo_billetes += "<p>";
+        document.write(parrafo_billetes);
+
+    </script>
+</body>

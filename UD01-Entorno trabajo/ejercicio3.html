@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<body>
+
+    <script>
+         var aleatorio = Math.floor(Math.random()* 101);
+    console.log(aleatorio);
+    var contador=0;
+    var minumero;
+
+    do{
+        minumero = prompt("Dime un numero");
+        var minumero_int=parseInt(minumero);
+
+        if(minumero_int>aleatorio){
+            console.log("El numero es mayor")
+        }else if(minumero_int<aleatorio){
+            console.log("El numero es menor")
+        }else if(minumero_int==aleatorio){
+            alert("Has acertado");
+        }
+        contador++;
+    }while(minumero_int!=aleatorio);
+    document.write("has utilizado "+contador+ " intentos");
+    </script>
+</body>
