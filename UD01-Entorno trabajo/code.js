@@ -35,7 +35,7 @@ function jugada(){
   //  recoje valor de solo el 01
 }
 
-function tirradaMaquia(){
+function tiradaMaquia(){
     //aleatorio para añadir 0
     var aleatorio_o = Math.floor(Math.random() * 2);
     document.getElementById("casilla_aleatoria").value = tablero[aleatorio_o][aleatorio_o];
