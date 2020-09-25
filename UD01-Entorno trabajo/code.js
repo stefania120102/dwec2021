@@ -8,8 +8,8 @@ console.log(tablero);
 
 function pinto_tablero(){
 
-    for(i=0;i<=2; i++){
-        for(j=0;j<=2;j++){
+    for(i=0;i<tablero.length; i++){
+        for(j=0;j<tablero.length;j++){
             var id_casilla = "casilla_" + i + j;
             document.getElementById(id_casilla).value=tablero[i][j];
             //AQUI FALTA UN IF
@@ -30,7 +30,7 @@ function leoTablero(){
  //leer todos los valores de los inputs y meterlos en tablero
 
 for(i=0;i<tablero.length;i++){
-    for(j=0;tablero.length;i++){
+    for(j=0;j<tablero.length;j++){
         var id_casilla = "casilla_" + i + j;
         tablero[i][j] = document.getElementById(id_casilla).value;
 
@@ -38,20 +38,19 @@ for(i=0;i<tablero.length;i++){
         if((tablero[i][j] != "O") && (tablero != "_")){
             tablero[i][j] ="X";
         } 
-    }
-    
+    }   
 }
 
 console.log(tablero);
 compruebaGanador();
-tiradaMaquia();
+tiradaMaquina();
 compruebaGanador();
   //  var valor_01 = document.getElementById("casilla_01").value;
   //  console.log(valor_01);
   //  recoje valor de solo el 01
 }
 
-function tiradaMaquia(){
+function tiradaMaquina(){
     //aleatorio para añadir 0
 
     jugada_x = Math.floor(Math.random() * 3);
@@ -59,12 +58,12 @@ function tiradaMaquia(){
 
     console.log("jugadax" + jugada_x + "jugaday" + jugada_y) ;
     if(tablero[jugada_x][jugada_y] == "_"){
-        tablero[jugada_x][jugada_y] = "o";
+        tablero[jugada_x][jugada_y] = "O";
         pinto_tablero();
 
     }else{
         
-        tiradaMaquia();
+        tiradaMaquina();
        
     }
 
@@ -73,7 +72,7 @@ function tiradaMaquia(){
     tablero.replace("_", "o");*/
 }
 
-function comprobarJugador(){
+function compruebaGanador(){
     //comprobar si fila 1 2 y 3 son iguals para completar la diagonal
 
     if((tablero[0][0] == tablero[1][0]) && (tablero[1][0] == tablero[2][0])  && (tablero[0][0] != "_")){
