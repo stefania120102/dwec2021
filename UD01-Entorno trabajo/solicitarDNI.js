@@ -6,11 +6,39 @@
       seguidas las letras de todos los DNIs 
       introducidos. */
 
-    function solicitaDni(){
 
-        function letraDNI(numeroDni){
-            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-            return letras[numeroDni%23];
-        }
-
+    tiempo();
+    function tiempo(){
+        //setInterval(mensaje,20000);
+        var intervalo = setInterval("pedirNumero();",2000);
     }
+
+    function pedirNumero(){
+        var dni = "0";
+        var dni = prompt("Dime dni ");
+        if(dni != "-1"){//entre comillas porque el prompt es un string
+            var letDNI = letraDNI(dni); 
+            letrasDNI.push(letDNI);
+            //console.log(dni);
+            //console.log(letrasDNI);
+        }else{
+            clearTimeout(intervalo);
+            console.log("acabado");
+            //for(i= 0;i<letrasDNI.length;i++){
+                //alert(letrasDNI[i]);
+
+           // }
+            var dnisUnidos = letrasDNI.join(",");
+            alert(dnisUnidos);
+            }
+       
+    }
+
+    
+    function letraDNI(numeroDni){
+         var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+         return letras[numeroDni%23];
+     }
+
+    //var letrasDNI = new Array;
+    var letrasDNI = [];

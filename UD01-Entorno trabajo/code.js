@@ -30,7 +30,7 @@ function leoTablero(){
  //leer todos los valores de los inputs y meterlos en tablero
 
 for(i=0;i<tablero.length;i++){
-    for(j=0;j<tablero.length;j++){
+    for(j=0;j<tablero.length[i];j++){
         var id_casilla = "casilla_" + i + j;
         tablero[i][j] = document.getElementById(id_casilla).value;
 
