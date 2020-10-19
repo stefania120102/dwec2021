@@ -8,20 +8,17 @@ Se realiza el cronómetro */
 
  //objetivo del css hará que se pinte el circulo
  //var tabla = new Array;
- //tabla[0]=["_","_","_"],["_","_","_"],["_","_","_"];
 
+    var secuencia = new Array(9);
 
  function pintoCirculoRojo(){
-    aleatorio = Math.floor(Math.random() * 8);
-     for(var i=0;i<aleatorio;i++){
-         var id_circulo ="circulo_"+i;
-            document.getElementById(id_circulo).className="objetivo";
+    for(var i=0;i<aleatorio;i++){
+        var id_circulo ="circulo_"+i;
          
-     }
- }
-
- function circuloAleatorio(){
+        
+    }
+    var aleatorio = Math.floor(Math.random() * 8);
+    var circuloAleatorio = "circulo_"+aleatorio;
+    document.getElementById(circuloAleatorio).className="objetivo";
     
-     var idAleatorio ="circulo_"+aleatorio;
-    return idAleatorio;
  }
