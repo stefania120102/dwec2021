@@ -4,7 +4,7 @@ $(document).ready(function(){
     relleno_select();
 
     $("#producto").change(function(){
-
+        console.log("funciona");
         var producto_sel = $("#producto :selected").val(); //val para el valor y selected buscar era pseudo calse? .text para el nombre
         console.log(producto_sel);
         $("#puni").val(producto_sel);
@@ -12,17 +12,33 @@ $(document).ready(function(){
     });
 
     $("#anyadir").click(function(){
-        $("#tabla tbody").append("<tr> <td> " + $("#producto :selected").text() + "</td><td>  " + $("#cantidad").val() + "</td><td>"+ $("#puni").val() +"</td><td> "+$("#cantidad").val()*$("#puni").val()+"</td><td><button class = 'borrar'> Borrar</button> </td></tr>");
+        $("#tabla tbody").append("<tr> <td> " + $("#producto :selected").text() + "</td><td>  " + $("#cantidad").val() + "</td><td>"+ $("#puni").val() +"</td><td  class = 'precio_fila'> "+$("#cantidad").val()*$("#puni").val()+"</td><td><button class = 'borrar'> Borrar</button> </td></tr>");
         
         $(".borrar").click(function(){
 
-            console.log($(this).parent().parent());
+            //console.log($(this).parent().parent());
             $(this).parent().parent().remove();
+            recalcular();
         });
+
+        recalcular();
     
     });
 
 });
+
+function recalcular(){
+    var base = 0;
+    console.log($(".precio_fila"));
+    $(".precio_fila").each(function(){
+        base += parseFloat($(this).text());
+        
+    });
+    $("#base").text(base); //mostramos?
+    $("#iva").text(base*(0.21));
+    $("#total").text(base*(1.21));
+
+}
 
 function relleno_select(){
     $.ajax({
@@ -45,22 +61,3 @@ function relleno_select(){
         }
     });
 }
-
-/*var conexion;
-function function_ajax() {
-    conexion = new XMLHttpRequest();
-    conexion.onreadystatechange = function() {
-        if(conexion.readyState == 4 && conexion.status == 200){
-            var objeto_response = JSON.parse(conexion.responseText);
-
-            var miSelect = document.createElement("select");
-
-            for(var i in objeto_response.producto) {
-                console.log(objeto_response.producto[i].name);
-                var option_producto = ;
-            }
-        }
-        
-    }
-    
-}*/
