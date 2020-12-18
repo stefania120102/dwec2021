@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div id="miDiv" name="miDiv">
+            <p>HOLA papu</p>
+            <p>D</p>
+            <p>P</p>
+        </div>
+
+        <ul id="miLista">
+            <li>manzana</li>
+        </ul>
+
+        
+        <script>
+var myDiv = document.getElementById("miDiv")
+var losP = myDiv.getElementsByTagName("p"); //ME DEVUELVE UN ARRAY CON LOS P QUE HAY EN EL DIV CON ID miDiv
+var num = losP.length; //CUENTA LOS ELEMENTOS DEL ARRAY . Me devuelve un número
+alert("Hay " + num + " <p> elementos en el elemento miDiv");
+alert("En el primer P el HTML asociado es "+losP[0].innerHTML);
+//losP[0] ME DEVUELVE EL PRIMER P
+//EL innerHTML NOS PINTA EN EL alert el elemento p de la posicion 0
+
+
+//byName -> me dice el tipo de elemento que contiene el name con nombre X
+var x = document.getElementsByName("miDiv")[0].tagName;; // en este caso me devolveria div.
+document.write(x);
+//document.write(x[0].innerHTML); //aqui sin el o y tag name volvería a repetir lo que hay dentro del div
+      
+var list = document.getElementById("miDiv");   //id myDiv
+list.removeChild(list.parentNode[0]);  //aqui elimina el primer elemento no etiendo porq no va
+//parentNode o childNodes
+
+
+// Creo un nodo de tipo LI
+var nuevoNodo = document.createElement("LI");
+// Al nodo LI le asocio un texto (tambien podria asociarle XHTML con innerHTML)
+var nodoTexto = document.createTextNode("Agua");
+nuevoNodo.appendChild(nodoTexto);
+// A miLista, lista ya existente, le añado el elemento creado
+document.getElementById("miLista").appendChild(nuevoNodo); 
+        
+        
+        
+        </script>
+    </body>
+</html>
+

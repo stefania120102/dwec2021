@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            function coche(marca, modelo, anyo, matricula) {
+// Definimos una funcion para la clase
+function mostrarCoche() {
+var resultado = "Marca " + this.marca+ " modelo " +this.modelo;
+alert(resultado);
+}
+// Definimos e inicializamos los atributos
+this.marca=marca;
+this.modelo=modelo;
+this.anyo=anyo;
+this.matricula=matricula;
+// Asociamos la funcion definido antes al objeto
+this.mostrarCoche=mostrarCoche;
+}
+
+            // Construimos los objetos a partir de la clase
+var coche1=new coche("Seat","Ibiza",2000,"1234ABC");
+textoJSON=JSON.stringify(coche1);
+alert(textoJSON);
+// Reconstruimos el objeto y usamos un metodo para probarlo
+var cocheReconstruido=JSON.parse(textoJSON);
+cocheReconstruido.mostrarCoche();
+
+        </script>
+    </body>
+</html>

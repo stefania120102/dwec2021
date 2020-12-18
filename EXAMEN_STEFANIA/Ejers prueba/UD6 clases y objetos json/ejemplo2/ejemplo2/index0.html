@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>Pruebas con objetos</p>
+    <p id="personas"></p>
+
+  </body>
+
+<script>
+      var person = {
+        name: {pila: 'kate',
+                apellido: 'Smith'},
+        age: 32,
+        gender: "female",
+        interests: ["music", "skiing"],
+        bio() {
+          alert(
+            this.name.pila + " "+this.name.apellido+" is "+this.age+"years old. She likes "+this.interests[0]+"and "+this.interests[1] );
+        },
+        greeting() {
+          alert(`Hi! I'm ${this.name[0]}.`);
+        },
+      };
+      const myDataName = 'height';
+      const myDataValue = '1.75m';
+      person[myDataName] = myDataValue;
+
+        // Estructura
+          // Body
+          var div_personas = document.getElementById("personas");
+          let div_persona = document.createElement('div');
+          div_persona.classList.add('persona');
+          // Nombre
+          let nombre = document.createElement('h5');
+          nombre.textContent = person.name.pila + " " + person.name.apellido;
+
+          var boton_bio = document.createElement('button');
+          boton_bio.textContent ='Ver biografia';
+          boton_bio.addEventListener('click',function(){console.log(person.bio())});
+
+
+          div_persona.appendChild(nombre);
+          div_persona.appendChild(boton_bio);
+          div_personas.appendChild(div_persona);
+
+    </script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carrito</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/listar.js"></script>
+        <script src="js/cajaModal.js"></script>
+        <script src="js/insertarCliente.js"></script>
+        <!--<script src="js/borrar.js"></script>-->
+        <meta charset="UTF-8">
+
+    </head>
+
+    <body>
+        <h1>Admin menú</h1>
+        
+        <div class="clientes"><a href="menuPrincipal.html">Gestión clientes</a></div>
+        <div class="pedidos"><a href="pedidos.html">Gestión de pedidos</a></div>
+
+        
+        <div id="modalCliente">
+            <h2>Nuevo usuario</h2>
+            <form  id="nuevosDatos" method="POST">
+                <label>DNI<input type="text" id="dni" placeholder="12345678G" name="dni"  maxlength="9"></label><br>
+                <label>Nombre<input type="text" id="nombre" placeholder="antonio garcía" name="nombre" ></label><br>
+                <label>Dirección<input type="text" id="direccion" placeholder="C/ Colón" name="direccion" ></label><br>
+                <label>Email<input type="email" id="email" placeholder="antonio@gmail.com" name="email" ></label><br>
+                <input  id ="pwd" type="hidden" value="11111" name="pwd">
+                <input  id = "administrador" type="hidden" value="1" name="administrador">
+                <input type="submit" id="crear" name="crear" value="Crear nuevo"> <button id="cancelarCliente">Cancelar</button><br>
+                <!--<button id="cerrar">Cerrar</button>-->
+            </form>
+        </div>
+        
+        <div class="contenido">
+            <table id="tablaClientes">
+                    <tr>
+                        <th>DNI&nbsp;</th>
+                        <th>Nombre&nbsp;</th>
+                        <th>Operaciones</th>
+                    </tr>
+            </table>
+        </div>
+        <button id="verCajaCliente">Añadir usuario</button>
+        <footer>Ana Stefania Cabanach Caú</footer>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Admin menu - Pedidos</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <meta charset="utf-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/code_pedidos.js"></script>
+  </head>
+
+  <body>
+  	<header>
+  <h2>Admin menu</h2>
+  <div class="boton logout">
+    Ejemplo de proyecto
+  </div>
+  </div>
+</header>
+<nav class="navbar">
+  <a href="clientes.html" >Gestión clientes</a>
+  <a href="#" class="selec">Gestión de pedidos</a>
+</nav>
+<div class="contenido">
+  <div class="boton nuevo" id="anadir_pedido">Añadir nuevo</div>
+
+  <!-- modal añadir nuevo -->
+  <div id="modal-nuevo">
+    <div class="caja-modal">
+      <h3>Nuevo pedido </h3>
+      <form method="GET" action="#">
+        <div class="form-row">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha_nuevo" required>
+        </div>
+        <div class="form-row" id="div-clientes">
+          <label for="idCliente">Cliente </label>
+        </div>
+          <div class="form-operaciones">
+          <div class="boton nuevo" id="enviar_pedido">Crear nuevo</div>
+          <div class="boton cancelar" id="cancelar_nuevo">Cancelar</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="modal-mod">
+    <div class="caja-modal">
+      <h3>Modificar pedido</h3>
+      <form method="GET" action="#">
+        <div class="form-row">
+          <label for="id">ID</label>
+          <input type="text" id="mod-id" disabled >
+        </div>
+        <div class="form-row">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="mod-fecha" required >
+        </div>
+        <div class="form-row">
+          <label for="nombre">Cliente</label>
+          <input type="input" list="clientes" id="mod-dniCliente" required>
+        </div>
+        <div class="form-operaciones">
+          <div class="boton modificar">Modifica</div>
+          <div class="boton cancelar">Cancelar</div>
+        </div>
+      </form>
+        </div>
+    </div>
+  
+  <div class="row cabecera">
+    <div class="lista-elemento">Id</div>
+    <div class="lista-elemento">Cliente</div>
+    <div class="lista-elemento">Fecha</div>
+    <div class="lista-operaciones">Operaciones</div>
+  </div>
+  
+  
+</div>
+<footer>
+  <div>&copy; DAW IES Conselleria 2019</div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>Admin menu - Clientes</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <meta charset="utf-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/code_clientes.js"></script>
+  </head>
+<header>
+  <h2>Admin menu</h2>
+  <div class="boton logout">
+    Ejemplo de proyecto
+  </div>
+</header>
+<nav class="navbar">
+  <a href="#" class="selec">Gestión clientes</a>
+  <a href="pedidos.html">Gestión de pedidos</a>
+</nav>
+<div class="contenido">
+  <div class="boton nuevo" id="ensenyar_nuevo">Añadir nuevo</div>
+ 
+ <!-- modal nuevo -->
+  <div id="modal-nuevo">
+    <div class="caja-modal">
+      <h3>Nuevo usuario</h3>
+      <form method="GET" action="#">
+        <div class="form-row">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni_nuevo" required>
+        </div>
+        <div class="form-row">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre_nuevo" required>
+        </div>
+        <div class="form-row">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion_nuevo" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="text" id="email_nuevo" required>
+        </div>
+        <div class="form-operaciones">
+          <div class="boton nuevo" id="crear_nuevo">Crear nuevo</div>
+          <div class="boton cancelar"  id="cancelar_nuevo">Cancelar</div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- modal modificar -->
+    <div id="modal-mod">
+      <div class="caja-modal">
+      <h3>Modificar usuario</h3>
+      <form method="GET" action="#">
+        <div class="form-row">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni_mod" disabled value="">
+        </div>
+        <div class="form-row">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre_mod" required value="">
+        </div>
+        <div class="form-row">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion_mod" required value="">
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="text" id="email_mod" required value="">
+        </div>
+        <div class="form-operaciones">
+          <div class="boton modificar">Modifica</div>
+          <div class="boton cancelar" id="cancelar_mod">Cancelar</div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- aqui cargamos los clientes -->
+  <div class="row">
+    <div class="lista-elemento">DNI</div>
+    <div class="lista-elemento">Nombre</div>
+    <div class="lista-operaciones">Operaciones</div>
+  </div>
+  
+</div>
+<footer>
+  <div>&copy; DAW IES Conselleria 2020</div>
+</footer>
+  <body>
+
+  </body>
+</html>

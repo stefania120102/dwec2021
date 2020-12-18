@@ -1,0 +1,213 @@
+
+/*Importando las fuentes que se van a usar*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
+/* Estilos generales*/
+*{  
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+/*Estilos para la cabecera y el pie*/
+header>h2{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+header {
+  display: flex;
+justify-content: space-between;
+  background-color:teal;
+  padding:1em 2em;
+  border-radius:10px 10px 0px 0px;
+}
+header>h2{
+  color: white;
+}
+
+footer{
+  display:flex;
+  justify-content:center;
+  background-color:teal;
+  border-radius: 0px 0px 10px 10px;
+  padding: .5em;
+}
+
+footer>div{
+  color:white;
+  font-size:0.75em;
+}
+
+/* Estilo para el menu*/
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+/* Estilos de los botones de navegación */
+.navbar a {
+  color: white;
+  padding: 1.4em 2.0em;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Cambiando el color en hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.selec {
+  background-color:teal;
+  font-weight:bold;
+}
+
+/*Estilos para los botones*/
+
+.boton{
+  display: inline;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: .15em .5em;
+  align-self: flex-start;
+  margin-left:.5em;
+  color: white;
+  cursor: pointer;
+}
+
+.boton:hover{
+  box-shadow:0 2px #999;
+}
+
+.logout {
+  background-color:cadetblue;
+  border-color: who;
+}
+
+.nuevo{
+  background-color:CornflowerBlue;
+  border-color: DodgerBlue;
+}
+.editar,.modificar {
+   background-color:lightgreen;
+  border-color: limegreen;
+}
+
+.borrar, .cancelar{
+  background-color:indianred;
+  border-color:firebrick;
+}
+
+.detalle {
+  background-color:paleturquoise;
+  border-color: mediumturquoise;
+ 
+ }
+.redondo{
+   border-radius:50px;
+}
+
+/* Estilo para el main */
+.contenido {
+  margin: 1em 5em;
+  display: flex;
+  flex-flow:column;
+}
+
+/* Estilo para las filas */
+.row {
+  margin-top:0.1em;
+  padding:.5em;
+  border-bottom:1px solid gray;
+  display:flex;
+  justify-content:space-between;
+}
+
+
+.row-detalle {
+  font-size: smaller;
+  background-color:lightsalmon;
+}
+
+
+/*Cabecera*/
+.cabecera{
+  color:gray;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/*Estilo detalle*/
+.lineas {
+  display:flex;
+  flex-flow: column nowrap;
+}
+
+
+/*Estilo listado */
+.lista-elemento {
+  flex-grow:1;
+}
+.lista-nombre {
+  flex-grow:4;
+}
+.lista-operaciones{
+ flex-grow:1;
+ display:flex;
+ justify-content:flex-end;
+}
+
+/* Caja formulario */
+.caja-modal{
+  border: 1px solid teal;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: #fefefe;
+  width:50%;
+  margin:20% auto;
+}
+
+#modal-nuevo,#modal-mod{
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+.form-row{
+  display:flex;
+  justify-content: flex-end;
+  margin-top:.3em;
+}
+.form-row>label{
+    padding: .5em 1em .5em 0;
+    flex: 1;
+  }
+.form-row>input{
+    flex: 2;
+  }
+
+.form-row>select{
+  display:flex;
+  justify-content:flex-start;
+  }
+
+.form-operaciones{
+  margin-top:.5em;
+  display:flex;
+  justify-content:flex-end;
+}
+
+
+
+
+
+
+
+
