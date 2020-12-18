@@ -1,36 +1,81 @@
 window.onload = function () {
     //document.getElementById("genero_peli").addEventListener("change",anyado);
-    lista_datos();
+    lista_cartas();
+
 	$("#abrir_modal").click(function(){
-		$("#modal").show();
+		$("#modal_nueva_carta").show();
     });
     $("#cerrar_modal").click(function(){
-        $("#modal").hide();
+        $("#modal_nueva_carta").hide();
     });
+
+    console.log("jquery ok");
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        return arg != value;
+       }, "Value must not equal arg.");
 
     $("#enviar_carta").click(function(){
-        anyadir_dato();
-        var elemento=document.getElementById("peliculas");
+        anyadir_carta();
+        var elemento=document.getElementById("carta");
         elemento.submit();
     });
-    anyadir_dato();
+
+
 }
 
-function lista_datos(){
+function validar(evento){
+    $.validator.setDefaults({
+        submitHandler: function() {
+            alert("submitted! (skipping validation for cancel button)");
+        }
+    });
+    
+
+    evento.preventDefault();
+    $("#carta").validate({
+		rules: {
+            radioButton: {
+                required: true,
+            },
+            checkBox: {
+                required: true
+            },
+            selector: { valueNotEquals: "" }
+            
+        },
+        messages: {
+            radioButton: "Selecciona un radio button, por favor",
+            checkBox: "Seleccina un checkBox",
+
+        }
+            
+    })
+}
+
+function lista_cartas(){
 $.ajax({
-    url:"php/listo_peliculas.php", // no paso ningun dato, solo recojo
-    type:"POST",
+    url:"php/listo_cartas.php",
+    type: "POST",
     dataType:"json",
 }).done(function(respuesta){
-    console.log(respuesta); // array de objetos, lo itero y pinto una fila por cada objeto
+    console.log(respuesta);
+    // var fecha = document.getElementById("cartas");
     for(var i in respuesta){
         console.log(i);
 
-        $("#lista_pelis").append("<tr><td> ID: "+respuesta[i].id+"</td></tr><tr><td>"+respuesta[i].titulo+"</td></tr>");
-
-        console.log(respuesta[i].genero)
+        $("#cartas").append("<div class ='carta' id ='cartas'> <input class='fecha_carta' id = 'fecha_carta' type='hidden' value='"+respuesta[i].fecha+"'>" + respuesta[i].regalo1 + " - " + respuesta[i].estrellas1 + " - " + respuesta[i].regalo2 + " - " + respuesta[i].estrellas2 + " - " + respuesta[i].regalo3 + " - " + respuesta[i].estrellas3 + " - <button id='btn_borrar'>Borrar</button></div>");
 
     }
+    
+    //getElementById("fecha_carta").value;
+    
+    // console.log(fecha);
+    // fecha.addEventListener("mouseenter"),function(){
+    //     document.getElementById("fecha").innerHTML = "Fecha: " + fecha;
+    // }
+    // fecha.addEventListener("mouseleave"),function(){
+    //     document.getElementById("fecha").innerHTML = "";
+    // }
 }).fail(function( jqXHR, textStatus, errorThrown ) {
     console.log( "La solicitud ha fallado: " +  textStatus + errorThrown);
 });
@@ -38,30 +83,30 @@ $.ajax({
 
 }
 
-function anyadir_dato(){
-    var objeto_dato = {   //monto un objeto con los datos de la fila a insertar en la BD
-            titulo:$('#titulo').val(),
-            anyo:$('#anyo').val(),
-            director:$('#director').val(),
-            genero:$('#genero_peli option:selected').val(),
-            actor1:$('#actor1').val(),
-            actor2:$('#actor2').val()
+function anyadir_carta(){
+    var objeto_dato = {
+            fecha:$('.fecha_carta').val(),
+            regalo1:$('#regalo1').val(),
+            regalo2:$('#regalo2').val(),
+            regalo3:$('#regalo3').val(),
+            pref1:$('.preferencia1:checked').val(),
+            pref2:$('.preferencia2:checked').val(),
+            pref3:$('.preferencia3:checked').val()
             };
     console.log(objeto_dato);
     
     $.ajax({
-        url:"php/envio_pelicula.php",
+        url:"php/envio_carta.php",
         type:"POST",
-        data: objeto_dato, // paso el dato por el post
+        data: objeto_dato,
         dataType:"json",
     }).done(function(respuesta){
-        console.log(respuesta);  // recojo la respuesta, que sera true o false
+        console.log(respuesta);
        if(respuesta){
-            $("#lista").append("<tr><td>"+objeto_dato.titulo+"</td><td>"+objeto_dato.director+"</td><td>"+objeto_dato.actor1+"</td></tr>");
+            $("#cartas").append("<div class ='cartas' id ='cartas'> <input class='fecha_carta' id = 'fecha_carta' type='hidden' value='"+objeto_dato.fecha+"'>"+ objeto_dato.regalo1 + " - " + objeto_dato.pref1 + " - " + objeto_dato.regalo2 + " - " + objeto_dato.pref2 + " - " + objeto_dato.regalo3 +" - " + objeto_dato.pref3 + " - <button id='btn_borrar'>Borrar</button></div>");
             console.log(objeto_dato.genero);
-            //alert("Dato insertado correctamente !!!!");//si es correcta, inserto los datos en una fila nueva
         }else{ 
-            alert("Error en la insercion"); //si no es correcta no inserto nada
+            alert("Error en la insercion");
         } 
     }).fail(function( jqXHR, textStatus, errorThrown ) {
         console.log( "La solicitud ha fallado: " +  textStatus + errorThrown);
@@ -70,40 +115,3 @@ function anyadir_dato(){
 
 }
 
-var total=0; // suma total de escaños
-window.onload = function(){
-    document.getElementById("partido").addEventListener("change",anyado_partido);
-    document.getElementById("limpiar").addEventListener("click",function(){
-        total=0;
-        document.getElementById("panel").innerHTML="";
-        document.getElementById("total").innerHTML="";
-    });
-}
-function anyado_partido(){
-    var options=document.getElementsByTagName("option");
-    var partido = document.createElement('span');
-    for(var i=0; i<options.length;i++){ //buscando el option seleccionado
-        if(options[i].selected){  // para recoger el atributo escanyos del elegido
-            var escanyos = parseInt(options[i].getAttribute("escanyos")); //quiero el valor de escanyos
-            console.log(escanyos);
-            partido.style.display= "inline-block"; // para poder modificar anchura
-            partido.style.width= (escanyos*2)+"px"; // ancho = escaños * 2
-            partido.textContent= options[i].text; //Texto
-            partido.style.backgroundColor=options[i].value; //color
-            partido.addEventListener("click", function(){ //gestiono evento para borrar
-                this.remove();
-                total-=escanyos;
-                document.getElementById("total").innerHTML="TOTAL :"+total;
-            } );
-            partido.addEventListener("mouseenter",function(){ //cuando entra raton
-                document.getElementById("escanyos_partido").innerHTML="Escaños :"+escanyos;
-            })
-            partido.addEventListener("mouseleave",function(){ //cuando sale raton
-                document.getElementById("escanyos_partido").innerHTML="";
-            })
-            document.getElementById("panel").appendChild(partido); // lo añado
-            total += escanyos;
-            document.getElementById("total").innerHTML="TOTAL :"+total;
-        }
-    }
-}
